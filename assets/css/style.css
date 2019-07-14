@@ -1,0 +1,39 @@
+body{
+    background-image: url('../images/simple.gif');
+}
+.head{
+    display: table;
+    background-color: orange;
+
+}
+h1{
+    color:white;
+}
+.rules{
+    display:table;
+    background-color: antiquewhite;
+
+}
+
+#random_num{
+    padding:50px;
+    display: table;
+    background-color: green;
+
+}
+#info_box{
+    display:table;
+    background-color: aquamarine;
+}
+#total_score{
+    display:table;
+    background-color: darkgreen;
+    color:white;
+    padding:50px;
+}
+#score{
+    display:table;
+    background-color: darkgreen;
+    color:white;
+    
+}

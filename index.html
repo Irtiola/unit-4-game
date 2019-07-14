@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+
+
+    </head>
+    <body>
+        <div class="head">
+            <h1>Crystals Collector</h1>
+        </div>
+        <div class="rules">
+            <p> You will be given a random number at the start of the game.</p>
+            <p>There are four crystals below. By clicking on a crystal you will add a specific amount 
+                of points to your total score.
+            </p>
+        </div>
+        <div id="random_num"></div>
+        <div id="info_box">
+            <p id="game_result"></p>
+            <p>Wins: <span id="wins"></span></p>
+            <p>Losses: <span id="losses"></span></p>
+        </div>
+
+        <div class="gems_list"><span id="gem_row"></span></div>
+
+        <p id ="score">Your total score is: <div id="total_score"></div> </p>
+        
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            //function that generates random number from 19 to 120
+            function generateRandomNumber(min,max){
+             var random_num = Math.floor(Math.random()*(max+1 -min));
+             $('#random_num').text(random_num);
+            }
+            generateRandomNumber(19,120);
+            // variable and jquery that updates number of wins
+            var wins=0;
+            $('#wins').text(wins);
+            //variable total score
+            var score = 0;
+            $('#total_score').text(score);
+
+            //function that generate random hidden gem value from 1 to 12
+            var hiddenValue=[];
+            function generateRandomHiddenValue(min,max){
+                var hiddenValue = Math.floor(Math.random()*(max+1-min));
+                console.log(hiddenValue);
+                return hiddenValue;
+            }
+            // generateRandomHiddenValue(1,12);
+
+            //object that creates gems
+                var gemList ={
+                    red:{value:generateRandomHiddenValue(1,12), img: 'assets/images/red.jpeg'},
+                    blue:{value: generateRandomHiddenValue(1,12), img:'assets/images/blue.jpeg'},
+                    purple:{value:generateRandomHiddenValue(1,12), img:'assets/images/purple.jpeg'},
+                    white:{value:generateRandomHiddenValue(1,12), img:'assets/images/white.jpeg'},  
+                }
+             function addGemOn(){
+
+                $('#gem_row').append('<img src=' + gemList.red.img + '>');
+                $('#gem_row').append('<img src=' + gemList.blue.img + '>');
+                $('#gem_row').append('<img src=' + gemList.purple.img + '>');
+                 $('#gem_row').append('<img src=' + gemList.white.img + '>');
+
+             }
+               addGemOn();
+
+              var total_score =  $('img').on('click', function(){
+                  var userGem = $(this).attr('value');
+                  console.log(userGem);
+                   for (var i=0; i<hiddenValue.length; i++){
+                       
+                   }
+                   
+
+
+
+
+                   console.log(gemList.blue.value);
+
+               });
+
+               
+               
+
+
+
+
+
+                //styling with jquery
+                $(".rules >p").css("color", "green");
+
+              
+            
+            
+      
+        </script>
+
+    </body>
+</html>
