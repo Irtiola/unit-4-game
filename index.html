@@ -14,87 +14,83 @@
         <div class="rules">
             <p> You will be given a random number at the start of the game.</p>
             <p>There are four crystals below. By clicking on a crystal you will add a specific amount 
-                of points to your total score.
+                of points to your total score.<br>
+                * Your game will hide this amount until the player clicks a crystal.<br>
+                * When they do click one, update the player's score counter.<br>
+                * The player wins if their total score matches the random number from the beginning of the game.<br>
+                * The player loses if their score goes above the random number.
             </p>
         </div>
-        <div id="random_num"></div>
-        <div id="info_box">
-            <p id="game_result"></p>
+        <div id="randomNum"></div>
+        <div id="infoBox">
+            <p id="gameResult"></p>
             <p>Wins: <span id="wins"></span></p>
             <p>Losses: <span id="losses"></span></p>
         </div>
 
-        <div class="gems_list"><span id="gem_row"></span></div>
+        <div class="gemsList"><span id="gemsRow"></span></div>
 
-        <p id ="score">Your total score is: <div id="total_score"></div> </p>
+        <p id ="score">Your total score is: <div id="totalScore"></div> </p>
         
         
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-            //function that generates random number from 19 to 120
-            function generateRandomNumber(min,max){
-             var random_num = Math.floor(Math.random()*(max+1 -min));
-             $('#random_num').text(random_num);
-            }
-            generateRandomNumber(19,120);
-            // variable and jquery that updates number of wins
+            // variable and jquery that updates number of wins/losses
+            
             var wins=0;
             $('#wins').text(wins);
+            var losses =0;
+            $('#losses').text(losses);
+            
             //variable total score
             var score = 0;
-            $('#total_score').text(score);
+            $('#totalScore').text(score);
+            
+            //styling with jquery
+            $(".rules >p").css("color", "green");
+            
 
-            //function that generate random hidden gem value from 1 to 12
-            var hiddenValue=[];
-            function generateRandomHiddenValue(min,max){
-                var hiddenValue = Math.floor(Math.random()*(max+1-min));
-                console.log(hiddenValue);
-                return hiddenValue;
+            // function to generate a random number between min and max
+            function getRandomValue(min,max){
+                var randomNum = Math.floor(Math.random()*(max-min))+1;
+                return randomNum;
             }
-            // generateRandomHiddenValue(1,12);
-
+            
+            var randomNumGame = $('#randomNum').text(getRandomValue(19,120));
+    
             //object that creates gems
                 var gemList ={
-                    red:{value:generateRandomHiddenValue(1,12), img: 'assets/images/red.jpeg'},
-                    blue:{value: generateRandomHiddenValue(1,12), img:'assets/images/blue.jpeg'},
-                    purple:{value:generateRandomHiddenValue(1,12), img:'assets/images/purple.jpeg'},
-                    white:{value:generateRandomHiddenValue(1,12), img:'assets/images/white.jpeg'},  
+                    red:{value:getRandomValue(1,12), img: 'assets/images/red.jpeg'},
+                    blue:{value: getRandomValue(1,12), img:'assets/images/blue.jpeg'},
+                    yellow:{value:getRandomValue(1,12), img:'assets/images/yellow.jpeg'},
+                    green:{value:getRandomValue(1,12), img:'assets/images/green.jpeg'}
+                     
                 }
-             function addGemOn(){
+                console.log(gemList);
+            
+            //function that adds gems on screen
+             function addGemOnScreen(){
 
-                $('#gem_row').append('<img src=' + gemList.red.img + '>');
-                $('#gem_row').append('<img src=' + gemList.blue.img + '>');
-                $('#gem_row').append('<img src=' + gemList.purple.img + '>');
-                 $('#gem_row').append('<img src=' + gemList.white.img + '>');
+                $('#gemsRow').append('<img src="assets/images/red.jpeg" data-type="red">');//long way
+                $('#gemsRow').append('<img src=' + gemList.blue.img + ' data-type="blue">');//short way 
+                $('#gemsRow').append('<img src=' + gemList.yellow.img + ' data-type="yellow">');
+                $('#gemsRow').append('<img src=' + gemList.green.img + ' data-type="green">');
 
              }
-               addGemOn();
+               addGemOnScreen();
+            
+            
+            // 
+            $('img').on('click', function() {  
+                var color = $(this).attr('data-type');
+                score += gemList[color].value;
+                $('#totalScore').text(score);
+              
 
-              var total_score =  $('img').on('click', function(){
-                  var userGem = $(this).attr('value');
-                  console.log(userGem);
-                   for (var i=0; i<hiddenValue.length; i++){
-                       
-                   }
-                   
+            });
 
-
-
-
-                   console.log(gemList.blue.value);
-
-               });
-
-               
-               
-
-
-
-
-
-                //styling with jquery
-                $(".rules >p").css("color", "green");
+                
 
               
             
