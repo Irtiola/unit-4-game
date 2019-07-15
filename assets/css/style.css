@@ -1,15 +1,19 @@
 body{
     background-image: url('../images/simple.gif');
+    font-family: 'Special Elite', cursive;
+
 }
 .head{
     display: table;
     background-color: orange;
+    padding: 30px;
 
 }
 h1{
     color:white;
 }
 .rules{
+    padding:10px 10px;
     display:table;
     background-color: antiquewhite;
 
@@ -19,9 +23,12 @@ h1{
     padding:50px;
     display: table;
     background-color: green;
+    font-weight: bold;
 
 }
 #infoBox{
+    padding-left: 10px;
+    padding-right: 40px;
     display:table;
     background-color: aquamarine;
 }
@@ -32,6 +39,7 @@ h1{
     padding:50px;
 }
 #score{
+    padding:30px;
     display:table;
     background-color: darkgreen;
     color:white;

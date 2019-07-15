@@ -6,8 +6,7 @@ var losses =0;
 $('#losses').text(losses);
 
 //variable total score
-var score = 0;
-$('#totalScore').text(score);
+var score=0;
 
 //styling with jquery
 $(".rules >p").css("color", "green");
@@ -19,19 +18,23 @@ function getRandomValue(min,max){
     return rn;
 }
 //adding number in to div #randomNUm
-var gameNum = getRandomValue(19,120);
-$('#randomNum').text(gameNum);
+var gameNum = 0;
+var gemList = {};
 
-
-//object that creates gems
-    var gemList ={
+function restartGame() {
+    score = 0;
+    $('#totalScore').text(score);
+    gameNum = getRandomValue(19,120);
+    $('#randomNum').text(gameNum);
+    gemList = {
         red:{value:getRandomValue(1,12), img: 'assets/images/red.jpeg'},
         blue:{value: getRandomValue(1,12), img:'assets/images/blue.jpeg'},
         yellow:{value:getRandomValue(1,12), img:'assets/images/yellow.jpeg'},
         green:{value:getRandomValue(1,12), img:'assets/images/green.jpeg'}
          
-    }
+    };
     console.log(gemList);
+}
 
 //function that adds gems on screen
  function addGemOnScreen(){
@@ -42,7 +45,9 @@ $('#randomNum').text(gameNum);
     $('#gemsRow').append('<img src=' + gemList.green.img + ' data-type="green">');
 
  }
+   restartGame();
    addGemOnScreen();
+   
 
 
 // 
@@ -50,6 +55,8 @@ $('img').on('click', function() {
     var color = $(this).attr('data-type');
     score += gemList[color].value;
     $('#totalScore').text(score);
+    var audio = $('#isound')[0];
+    audio.play();
     if(score > gameNum){
         losses++;
         $('#losses').text(losses);
@@ -67,22 +74,5 @@ $('img').on('click', function() {
 
 });
  
-// function updateScreen(){
-//     var gameNum = getRandomValue(19,120);
-//     $('#randomNum').text(gameNum);
-//     var score = 0;
-//     $('#totalScore').text(score); 
-//     $('#gemsRow').append('<img src="assets/images/red.jpeg" data-type="red">');//long way
-//     $('#gemsRow').append('<img src=' + gemList.blue.img + ' data-type="blue">');//short way 
-//     $('#gemsRow').append('<img src=' + gemList.yellow.img + ' data-type="yellow">');
-//     $('#gemsRow').append('<img src=' + gemList.green.img + ' data-type="green">');
-    
-         
-//     }
-   
-//     function resetGame(){
-
-//     }
-
 
 

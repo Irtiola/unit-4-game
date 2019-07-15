@@ -4,13 +4,16 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+        <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
 
 
     </head>
     <body>
+        <audio id="isound">  <source src="./assets/isound.mp3" type="audio/mpeg">
+        </audio>
         <div class="head">
             <h1>Crystals Collector</h1>
-        </div>
+        </div><br>
         <div class="rules">
             <p> You will be given a random number at the start of the game.</p>
             <p>There are four crystals below. By clicking on a crystal you will add a specific amount 
@@ -20,13 +23,13 @@
                 * The player wins if their total score matches the random number from the beginning of the game.<br>
                 * The player loses if their score goes above the random number.
             </p>
-        </div>
-        <div id="randomNum"></div>
+        </div><br>
+        <div id="randomNum"></div><br>
         <div id="infoBox">
             <p id="gameResult"></p>
             <p>Wins: <span id="wins"></span></p>
             <p>Losses: <span id="losses"></span></p>
-        </div>
+        </div><br>
 
         <div class="gemsList"><span id="gemsRow"></span></div>
 
