@@ -12,12 +12,14 @@ var score=0;
 $(".rules >p").css("color", "green");
 
 
-// function to generate a random number between min and max
+// function to generate a random number between min and max will be used to generate random number
+//from 19 to 120 and from 1 to 12
 function getRandomValue(min,max){
     var rn = Math.floor(Math.random()*(max-min))+1;
     return rn;
 }
-//adding number in to div #randomNUm
+
+//dedclaring global var
 var gameNum = 0;
 var gemList = {};
 
@@ -45,12 +47,12 @@ function restartGame() {
     $('#gemsRow').append('<img src=' + gemList.green.img + ' data-type="green">');
 
  }
-   restartGame();
+   restartGame();//very important to call this function before adding gems on screen!
    addGemOnScreen();
    
 
 
-// 
+// all action when user clicks and checking conditions in order to update wins/losses
 $('img').on('click', function() {  
     var color = $(this).attr('data-type');
     score += gemList[color].value;
